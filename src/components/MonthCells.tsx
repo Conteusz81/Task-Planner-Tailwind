@@ -3,8 +3,11 @@ import {
     addDays,
     endOfMonth,
     endOfWeek,
-    formatISO, getDate,
+    formatISO,
+    getDate,
+    isSameDay,
     isSameMonth,
+    isSunday,
     startOfMonth,
     startOfWeek
 } from "date-fns";
@@ -30,6 +33,8 @@ const MonthCells = () => {
                 dayID={dayKey}
                 dayNumber={dayNumber}
                 isSameMonth={isSameMonth(day, monthStart)}
+                isSameDay={isSameDay(day, new Date())}
+                isSunday={isSunday(day)}
             />
         );
         day = addDays(day, 1);
