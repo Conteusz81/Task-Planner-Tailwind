@@ -8,6 +8,12 @@ module.exports = {
       fontFamily: {
         body: ['Nunito']
       },
+      spacing: {
+        per85: '85%',
+      },
+      gridTemplateRows: {
+        'custom': 'repeat(6, minmax(5rem, 1fr))'
+      }
     },
   },
   variants: {},
