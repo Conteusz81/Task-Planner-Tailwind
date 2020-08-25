@@ -1,10 +1,42 @@
-import React from 'react';
+import React from "react";
+import {
+    addDays,
+    endOfMonth,
+    endOfWeek,
+    formatISO, getDate,
+    isSameMonth,
+    startOfMonth,
+    startOfWeek
+} from "date-fns";
+import { useDate } from "../utilities/DateProvider";
+import DayCard from "./DayCard";
 
 const MonthCells = () => {
-    return (
-        <div>
+    const { currentDate } = useDate();
+    const monthStart = startOfMonth(currentDate);
+    const monthEnd = endOfMonth(monthStart);
+    const startDate = startOfWeek(monthStart, {weekStartsOn: 1});
+    const endDate = endOfWeek(monthEnd, {weekStartsOn: 1});
+    let days = [];
+    let day = startDate;
 
-        </div>
+    while (day <= endDate) {
+        const dayNumber = getDate(day);
+        let dayKey = formatISO(day, {representation: "date"});
+
+        days.push(
+            <DayCard
+                key={dayKey}
+                dayID={dayKey}
+                dayNumber={dayNumber}
+                isSameMonth={isSameMonth(day, monthStart)}
+            />
+        );
+        day = addDays(day, 1);
+    }
+
+    return (
+        <div className="grid grid-rows-custom grid-cols-7 gap-2 md:gap-4 h-per85">{days}</div>
     );
 };
 
