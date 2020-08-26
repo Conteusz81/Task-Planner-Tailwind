@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { addMonths, subMonths } from "date-fns";
 
-interface IContext {
+interface IDateContext {
     currentDate: Date;
     nextMonth: () => void;
     prevMonth: () => void;
 }
 
-const DateContext = React.createContext<IContext | undefined>(undefined);
+const DateContext = React.createContext<IDateContext | undefined>(undefined);
 
 const DateProvider: React.FC = ({ children }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
