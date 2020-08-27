@@ -1,8 +1,15 @@
 import React from "react";
 import cx from "classnames";
 import { GoPrimitiveDot } from "react-icons/go";
-import { IDayCardProps } from "../utilities/interfaces";
 import { useDate } from "../utilities/DateProvider";
+
+export interface IDayCardProps {
+    dayID: string;
+    dayNumber: number;
+    isSameMonth: boolean;
+    isSameDay: boolean;
+    isSunday: boolean;
+}
 
 const DayCard: React.FC<IDayCardProps> = ({
          dayID,

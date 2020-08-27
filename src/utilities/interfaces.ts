@@ -1,7 +1,1 @@
-export interface IDayCardProps {
-    dayID: string;
-    dayNumber: number;
-    isSameMonth: boolean;
-    isSameDay: boolean;
-    isSunday: boolean;
-}
+export type Nav = "months" | "years";

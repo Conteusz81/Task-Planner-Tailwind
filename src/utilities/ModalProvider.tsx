@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
+import { Nav } from "./interfaces";
 
 type Slide = "up" | "left" | "right" | "down";
-type Nav = "months" | "years";
 
 interface IModalContext {
     open: boolean;
