@@ -11,7 +11,7 @@ const WeekDays = () => {
 
     for (let i = 0; i < 7; i++) {
         days.push(
-            <div className="" key={i}>
+            <div key={i}>
                 <span className="hidden md:inline-block">
                     {format(addDays(startDate, i), fullWeekDayFormat)}
                 </span>

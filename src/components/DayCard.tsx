@@ -19,15 +19,11 @@ const DayCard: React.FC<IDayCardProps> = ({
          isSunday
     }) => {
     const { nextMonth, prevMonth } = useDate();
-    const wrapperClassValues = cx("rounded-lg cursor-pointer flex flex-col p-1 md:p-2", {
-        'border-solid border-2 border-gray-600': isSameDay,
+    const wrapperClassValues = cx("day_card_wrapper", {
+        'same_day': isSameDay,
         'bg-teal-200': isSunday,
-        'shadow-md font-bold': isSameMonth,
-        'shadow-sm text-gray-600 font-light text-base': !isSameMonth
-    });
-    const iconsClassValues = cx(
-        "flex flex-col items-center md:flex-row md:justify-end md:text-2xl lg:text-3xl", {
-        'opacity-25': !isSameMonth,
+        'font-bold': isSameMonth,
+        'opacity-25 font-base': !isSameMonth
     });
 
     const handleDayCardClick = () => {
@@ -43,8 +39,8 @@ const DayCard: React.FC<IDayCardProps> = ({
     }
     return (
         <div className={wrapperClassValues} onClick={handleDayCardClick}>
-            <div className="text-base mb-auto text-center md:text-lg lg:text-2xl md:text-left">{dayNumber}</div>
-            <div className={iconsClassValues}>
+            <div className="day_number">{dayNumber}</div>
+            <div className="task_icon">
                 {/*<GoPrimitiveDot style={{color: '#F36888'}}/>*/}
                 {/*<GoPrimitiveDot style={{color: '#FF9A5C'}}/>*/}
                 <GoPrimitiveDot style={{color: '#90C465'}}/>

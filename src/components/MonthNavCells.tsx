@@ -27,7 +27,7 @@ const MonthNavCells: React.FC<IYearNavProps> = ({ setNav }) => {
         handleClose();
     }
     return (
-        <div className="h-full p-3 md:p-6 grid grid-cols-3 grid-rows-calendar-nav gap-4 md:gap-8">
+        <div className="calendar_nav_wrapper">
             <MonthNav>
                 <div onClick={() => setNav("years")}>
                     {format(currentDate, "yyyy")}
@@ -35,7 +35,7 @@ const MonthNavCells: React.FC<IYearNavProps> = ({ setNav }) => {
             </MonthNav>
             { monthsArray.map((month, index) => (
                 <div
-                    className="flex justify-center items-center text-xl lg:text-4xl bg-gray-100 hover:bg-gray-300 hover:bg-opacity-50 font-medium shadow-md cursor-pointer"
+                    className="calendar_nav_cell hover:bg-gray-300 hover:bg-opacity-50"
                     key={index}
                     onClick={() => handleMonthClick(index)}
                 >

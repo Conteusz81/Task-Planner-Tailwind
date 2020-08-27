@@ -9,15 +9,15 @@ const Navigation: React.FC = () => {
     const { handleDateNavClickOpen } = useModal();
 
     return (
-        <div className="flex justify-between text-xl md:text-4xl mb-6 font-semibold">
-            <div className="cursor-pointer pt-1">
+        <div className="navigation_wrapper">
+            <div className="chevron_icon">
                 <BsChevronLeft onClick={prevMonth}/>
             </div>
             <div className="flex cursor-pointer">
-                <div className="mr-2" onClick={() => handleDateNavClickOpen("months")}>{format(currentDate, "MMMM")}</div>
+                <div className="mr-3" onClick={() => handleDateNavClickOpen("months")}>{format(currentDate, "MMMM")}</div>
                 <div onClick={() => handleDateNavClickOpen("years")}>{format(currentDate, "yyyy")}</div>
             </div>
-            <div className="cursor-pointer pt-1">
+            <div className="chevron_icon">
                 <BsChevronRight onClick={nextMonth}/>
             </div>
         </div>

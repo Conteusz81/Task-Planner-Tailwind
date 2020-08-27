@@ -12,14 +12,14 @@ const YearNav: React.FC<IYearNavProps> = ({ subYearStart, addYearEnd }) => {
     const { nextYear, prevYear } = useDate();
 
     return (
-        <div className="text-xl lg:text-4xl flex justify-between col-span-3">
-            <div className="cursor-pointer pt-1">
+        <div className="calendar_nav">
+            <div className="chevron_icon">
                 <BsChevronLeft onClick={() => prevYear(12)}/>
             </div>
             <div>
                 <div>{format(subYearStart, "yyyy")} - {format(addYearEnd, "yyyy")}</div>
             </div>
-            <div className="cursor-pointer pt-1">
+            <div className="chevron_icon">
                 <BsChevronRight onClick={() => nextYear(12)}/>
             </div>
         </div>

@@ -5,7 +5,7 @@ import MonthCells from "./MonthCells";
 
 const Calendar = () => {
     return (
-        <div className="font-body h-screen p-3 md:p-6 grid grid-rows-main">
+        <div className="font-body h-screen p-3 lg:p-6 grid grid-rows-main">
             <Navigation />
             <WeekDays />
             <MonthCells />

@@ -41,7 +41,7 @@ const MonthCells = () => {
     }
 
     return (
-        <div className="grid grid-cols-7 grid-rows-custom gap-2 md:gap-4">
+        <div className="grid grid-cols-7 grid-rows-days gap-2 lg:gap-4">
             {days}
         </div>
     );
