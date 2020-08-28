@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import YearNavCells from "./YearNavCells";
 import MonthNavCells from "./MonthNavCells";
-import ModalClose from "./ModalClose";
 import { Nav } from "../utilities/interfaces";
 
 const CalendarNav: React.FC<{ nav: Nav }> = ({ nav }) => {
@@ -13,7 +12,6 @@ const CalendarNav: React.FC<{ nav: Nav }> = ({ nav }) => {
 
     return (
         <div className="h-full grid grid-rows-nav">
-            <ModalClose />
             { calendarNav === "years" && <YearNavCells setNav={handleNavChange} /> }
             { calendarNav === "months" && <MonthNavCells setNav={handleNavChange} /> }
         </div>

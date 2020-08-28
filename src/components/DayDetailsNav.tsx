@@ -7,7 +7,7 @@ const DayDetailsNav = () => {
     const { chosenDay, nextDay, prevDay } = useDate();
 
     return (
-        <div className="flex justify-between p-4 text-xl lg:text-4xl lg:p-8">
+        <div className="flex justify-between text-xl lg:text-4xl">
             <div className="chevron_icon">
                 <BsChevronLeft onClick={prevDay}/>
             </div>
