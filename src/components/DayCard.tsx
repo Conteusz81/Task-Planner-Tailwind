@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import cx from "classnames";
 import { GoPrimitiveDot } from "react-icons/go";
 import { useDate } from "../utilities/DateProvider";
+import { useModal } from "../utilities/ModalProvider";
 
 export interface IDayCardProps {
     dayID: string;
@@ -18,7 +19,8 @@ const DayCard: React.FC<IDayCardProps> = ({
          isSameDay,
          isSunday
     }) => {
-    const { nextMonth, prevMonth } = useDate();
+    const { nextMonth, prevMonth, setContextChosenDay } = useDate();
+    const { handleNavClickOpen } = useModal();
     const wrapperClassValues = cx("day_card_wrapper", {
         'same_day': isSameDay,
         'bg-teal-200': isSunday,
@@ -28,13 +30,14 @@ const DayCard: React.FC<IDayCardProps> = ({
 
     const handleDayCardClick = () => {
         if (!isSameMonth && dayNumber < 7) {
-            nextMonth()
+            nextMonth();
         }
         if (!isSameMonth && dayNumber > 22) {
-            prevMonth()
+            prevMonth();
         }
         if (isSameMonth) {
-            console.log(dayID);
+           handleNavClickOpen("day", "up");
+           setContextChosenDay(dayNumber);
         }
     }
     return (

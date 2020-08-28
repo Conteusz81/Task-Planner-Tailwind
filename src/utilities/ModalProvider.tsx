@@ -10,7 +10,7 @@ interface IModalContext {
     closeModal: () => void;
     slide: Slide;
     navigation: Nav;
-    handleDateNavClickOpen: (value: Nav) => void;
+    handleNavClickOpen: (nav: Nav, slide: Slide) => void;
     handleDateNavClickClose: () => void;
 }
 
@@ -22,8 +22,8 @@ const ModalProvider: React.FC = ({ children }) => {
     const [navigation, setNavigation] = useState<Nav>("years");
     const { setContextYear } = useDate();
 
-    const handleDateNavOpen = (nav: Nav) => {
-        setSlide("down");
+    const handleNavOpen = (nav: Nav, slide: Slide) => {
+        setSlide(slide);
         setNavigation(nav);
         setOpen(true);
     }
@@ -40,7 +40,7 @@ const ModalProvider: React.FC = ({ children }) => {
         slide,
         navigation,
         closeModal: () => setOpen(false),
-        handleDateNavClickOpen: (nav: Nav) => handleDateNavOpen(nav),
+        handleNavClickOpen: (nav: Nav, slide: Slide) => handleNavOpen(nav, slide),
         handleDateNavClickClose: handleDateNavClose,
     }
     return (
