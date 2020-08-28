@@ -1,1 +1,1 @@
-export type Nav = "months" | "years";
+export type Nav = "day" | "months" | "years";

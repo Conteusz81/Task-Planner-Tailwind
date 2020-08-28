@@ -83,6 +83,6 @@
     }
 
     .modal_close_wrapper {
-        @apply p-4 pr-6;
+        @apply p-4 pr-8;
     }
 }

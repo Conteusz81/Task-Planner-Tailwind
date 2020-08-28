@@ -6,7 +6,7 @@ import { useModal } from "../utilities/ModalProvider";
 
 const Navigation: React.FC = () => {
     const { currentDate, nextMonth, prevMonth } = useDate();
-    const { handleDateNavClickOpen } = useModal();
+    const { handleNavClickOpen } = useModal();
 
     return (
         <div className="navigation_wrapper">
@@ -14,8 +14,17 @@ const Navigation: React.FC = () => {
                 <BsChevronLeft onClick={prevMonth}/>
             </div>
             <div className="flex cursor-pointer">
-                <div className="mr-3" onClick={() => handleDateNavClickOpen("months")}>{format(currentDate, "MMMM")}</div>
-                <div onClick={() => handleDateNavClickOpen("years")}>{format(currentDate, "yyyy")}</div>
+                <div
+                    className="mr-3"
+                    onClick={() => handleNavClickOpen("months", "down")}
+                >
+                    {format(currentDate, "MMMM")}
+                </div>
+                <div
+                    onClick={() => handleNavClickOpen("years", "down")}
+                >
+                    {format(currentDate, "yyyy")}
+                </div>
             </div>
             <div className="chevron_icon">
                 <BsChevronRight onClick={nextMonth}/>

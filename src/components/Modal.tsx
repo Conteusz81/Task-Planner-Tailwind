@@ -3,6 +3,7 @@ import Dialog from "@material-ui/core/Dialog";
 import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
 import CalendarNav from "./CalendarNav";
+import DayDetails from "./DayDetails";
 import { useModal } from "../utilities/ModalProvider";
 
 const Transition = React.forwardRef(function Transition(
@@ -14,11 +15,12 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const Modal = () => {
-    const { open, navigation, closeModal } = useModal();
+    const { open, navigation, closeModal, slide } = useModal();
     return (
         <div>
             <Dialog fullScreen open={open} onClose={closeModal} TransitionComponent={Transition}>
-                <CalendarNav nav={navigation} />
+                { slide === "down" && <CalendarNav nav={navigation} /> }
+                { slide === "up" && <DayDetails /> }
             </Dialog>
         </div>
     );
