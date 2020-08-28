@@ -1,5 +1,5 @@
 import React from "react";
-import { eachMonthOfInterval, endOfYear, format, startOfYear } from "date-fns";
+import { eachMonthOfInterval, endOfYear, format, getYear, startOfYear } from "date-fns";
 import MonthNav from "./MonthNav";
 import { useDate } from "../utilities/DateProvider";
 import { useModal } from "../utilities/ModalProvider";
@@ -10,8 +10,8 @@ interface IYearNavProps {
 }
 
 const MonthNavCells: React.FC<IYearNavProps> = ({ setNav }) => {
-    const { currentDate, setContextMonth } = useDate();
-    const { handleClose } = useModal();
+    const { currentDate, setContextMonth, setContextYear } = useDate();
+    const { closeModal } = useModal();
 
     const yearStart = startOfYear(currentDate);
     const yearEnd = endOfYear(currentDate);
@@ -24,12 +24,18 @@ const MonthNavCells: React.FC<IYearNavProps> = ({ setNav }) => {
 
     const handleMonthClick = (month: number): void => {
         setContextMonth(month);
-        handleClose();
+        closeModal();
     }
+
+    const handleYearClick = () => {
+        setContextYear(getYear(new Date()));
+        setNav("years");
+    }
+
     return (
         <div className="calendar_nav_wrapper">
             <MonthNav>
-                <div onClick={() => setNav("years")}>
+                <div onClick={handleYearClick}>
                     {format(currentDate, "yyyy")}
                 </div>
             </MonthNav>

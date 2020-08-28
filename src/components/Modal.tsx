@@ -14,10 +14,10 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const Modal = () => {
-    const { open, navigation, handleClose } = useModal();
+    const { open, navigation, closeModal } = useModal();
     return (
         <div>
-            <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+            <Dialog fullScreen open={open} onClose={closeModal} TransitionComponent={Transition}>
                 <CalendarNav nav={navigation} />
             </Dialog>
         </div>
