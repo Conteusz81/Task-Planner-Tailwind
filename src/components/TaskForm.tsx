@@ -13,12 +13,14 @@ const validateTaskName = (value: string) => {
 
 const TaskForm = () => {
     const initialValue = { task: "", picked: EPriority.LOW }
+
     return (
         <div>
             <Formik
                 initialValues={ initialValue }
                 onSubmit={(values, { resetForm }) => {
                     resetForm();
+                    console.log(values);
                 }}
             >
                 {({
@@ -29,23 +31,33 @@ const TaskForm = () => {
                       handleBlur,
                   }) => (
                     <Form autoComplete="off">
-                        <div className="flex justify-between">
-                            <Field
-                                className="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-                                type="text"
-                                name="task"
-                                validate={validateTaskName}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.task}
-                                placeholder="Add Task"
-                            />
-
-                            <button type="submit" className="bg-white w-1/5 hover:bg-gray-100 text-gray-800 focus:outline-none font-medium py-2 border border-gray-400 rounded shadow">Add</button>
+                        <div className="h-16">
+                            <div className="flex justify-between">
+                                <Field
+                                    className="form_input focus:outline-none focus:bg-white"
+                                    type="text"
+                                    name="task"
+                                    validate={validateTaskName}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.task}
+                                    placeholder="Add Task"
+                                />
+                                <button
+                                    type="submit"
+                                    className="form_submit_button hover:bg-gray-100 focus:outline-none"
+                                >
+                                    Add
+                                </button>
+                            </div>
+                            {
+                                errors.task && touched.task &&
+                                <div className="text-red-500 text-xs italic">
+                                    {errors.task}
+                                </div>
+                            }
                         </div>
-
-                        {errors.task && touched.task && <div className="text-red-500 text-xs italic mt-2">{errors.task}</div>}
-                        <div>
+                        <div className="mt-3">
                             <RadioButton value={EPriority.HIGH} checked={values.picked === EPriority.HIGH}>
                                 High
                             </RadioButton>
@@ -56,7 +68,6 @@ const TaskForm = () => {
                                 Low
                             </RadioButton>
                         </div>
-
                     </Form>
                 )}
             </Formik>
