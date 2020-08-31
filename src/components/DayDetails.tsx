@@ -1,12 +1,14 @@
 import React from "react";
-import ModalClose from "./ModalClose";
 import DayDetailsNav from "./DayDetailsNav";
+import TaskForm from "./TaskForm";
+import TaskList from "./TaskList";
 
 const DayDetails = () => {
     return (
-        <div>
-            <ModalClose />
+        <div className="p-4 lg:p-8">
             <DayDetailsNav />
+            <TaskForm />
+            <TaskList />
         </div>
     );
 };
