@@ -11,7 +11,7 @@ const CalendarNav: React.FC<{ nav: Nav }> = ({ nav }) => {
     }
 
     return (
-        <div className="h-full grid grid-rows-nav">
+        <div className="h-full">
             { calendarNav === "years" && <YearNavCells setNav={handleNavChange} /> }
             { calendarNav === "months" && <MonthNavCells setNav={handleNavChange} /> }
         </div>

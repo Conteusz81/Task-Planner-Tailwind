@@ -19,7 +19,7 @@ const Modal = () => {
     const { open, navigation, closeModal, slide } = useModal();
     return (
         <div>
-            <Dialog fullScreen open={open} onClose={closeModal} TransitionComponent={Transition}>
+            <Dialog fullScreen className="grid grid-rows-nav" open={open} onClose={closeModal} TransitionComponent={Transition}>
                 <ModalClose />
                 { slide === "down" && <CalendarNav nav={navigation} /> }
                 { slide === "up" && <DayDetails /> }
