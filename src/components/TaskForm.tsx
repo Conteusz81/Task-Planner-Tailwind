@@ -30,7 +30,7 @@ const TaskForm = () => {
                       handleChange,
                       handleBlur,
                   }) => (
-                    <Form autoComplete="off">
+                    <Form autoComplete="off" className="mb-8">
                         <div className="h-16">
                             <div className="flex justify-between">
                                 <Field
