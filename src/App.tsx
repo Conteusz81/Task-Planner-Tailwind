@@ -1,17 +1,20 @@
 import React from 'react';
 import './styles/main.css';
 import Calendar from "./components/Calendar";
-import { DateProvider } from "./utilities/DateProvider";
 import Modal from "./components/Modal";
-import {ModalProvider} from "./utilities/ModalProvider";
+import { DateProvider } from "./utilities/DateProvider";
+import { ModalProvider } from "./utilities/ModalProvider";
+import { TasksProvider } from "./utilities/TasksProvider";
 
 function App() {
   return (
       <DateProvider>
           <ModalProvider>
-              <Calendar />
-              <Modal />
-          </ModalProvider>
+            <TasksProvider>
+                <Calendar />
+                <Modal />
+            </TasksProvider>
+           </ModalProvider>
       </DateProvider>
   );
 }
