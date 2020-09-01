@@ -3,9 +3,11 @@ import cx from "classnames";
 import { GoPrimitiveDot } from "react-icons/go";
 import { useDate } from "../utilities/DateProvider";
 import { useModal } from "../utilities/ModalProvider";
+import { EPriority } from "../utilities/interfaces";
+import {useTask} from "../utilities/TasksProvider";
 
 export interface IDayCardProps {
-    dayID: string;
+    dateKey: string;
     dayNumber: number;
     isSameMonth: boolean;
     isSameDay: boolean;
@@ -13,7 +15,7 @@ export interface IDayCardProps {
 }
 
 const DayCard: React.FC<IDayCardProps> = ({
-         dayID,
+         dateKey,
          dayNumber,
          isSameMonth,
          isSameDay,
@@ -21,12 +23,19 @@ const DayCard: React.FC<IDayCardProps> = ({
     }) => {
     const { nextMonth, prevMonth, setContextChosenDay } = useDate();
     const { handleNavClickOpen } = useModal();
+    const { tasks } = useTask();
+    const taskData = tasks[dateKey] ?? [];
+
     const wrapperClassValues = cx("day_card_wrapper", {
         'same_day': isSameDay,
         'bg-teal-200': isSunday,
         'font-bold': isSameMonth,
         'opacity-25 font-base': !isSameMonth
     });
+
+    const pickedHigh = taskData.some(el => el.priority === EPriority.HIGH);
+    const pickedMedium = taskData.some(el => el.priority === EPriority.MEDIUM);
+    const pickedLow = taskData.some(el => el.priority === EPriority.LOW);
 
     const handleDayCardClick = () => {
         if (!isSameMonth && dayNumber < 7) {
@@ -44,9 +53,9 @@ const DayCard: React.FC<IDayCardProps> = ({
         <div className={wrapperClassValues} onClick={handleDayCardClick}>
             <div className="day_number">{dayNumber}</div>
             <div className="task_icon">
-                {/*<GoPrimitiveDot style={{color: '#F36888'}}/>*/}
-                {/*<GoPrimitiveDot style={{color: '#FF9A5C'}}/>*/}
-                <GoPrimitiveDot style={{color: '#90C465'}}/>
+                { pickedHigh && <GoPrimitiveDot className="text-red-600" />}
+                { pickedMedium && <GoPrimitiveDot className="text-yellow-600" />}
+                { pickedLow && <GoPrimitiveDot className="text-green-600" />}
             </div>
         </div>
     );

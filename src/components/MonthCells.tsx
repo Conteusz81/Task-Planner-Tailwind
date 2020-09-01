@@ -25,12 +25,12 @@ const MonthCells = () => {
 
     while (day <= endDate) {
         const dayNumber = getDate(day);
-        let dayKey = formatISO(day, {representation: "date"});
+        let dateKey = formatISO(day, {representation: "date"});
 
         days.push(
             <DayCard
-                key={dayKey}
-                dayID={dayKey}
+                key={dateKey}
+                dateKey={dateKey}
                 dayNumber={dayNumber}
                 isSameMonth={isSameMonth(day, monthStart)}
                 isSameDay={isSameDay(day, new Date())}
