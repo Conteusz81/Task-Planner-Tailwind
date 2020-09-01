@@ -30,7 +30,7 @@ const RadioButton: React.FC<IRadioProps> = ({ value, checked, children}) => {
             <Field
                 className="opacity-0 absolute"
                 type="radio"
-                name="picked"
+                name="priority"
                 value={value}
             />
             <div className={radioClassNames} />

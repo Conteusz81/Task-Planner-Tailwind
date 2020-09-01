@@ -1,7 +1,8 @@
-import React from 'react';
-import { EPriority } from "../utilities/interfaces";
+import React from "react";
 import { Field, Form, Formik } from "formik";
 import RadioButton from "./RadioButton";
+import { useTask } from "../utilities/TasksProvider";
+import { EPriority, EType } from "../utilities/interfaces";
 
 const validateTaskName = (value: string) => {
     let error;
@@ -11,8 +12,9 @@ const validateTaskName = (value: string) => {
     return error;
 };
 
-const TaskForm = () => {
-    const initialValue = { task: "", picked: EPriority.LOW }
+const TaskForm: React.FC<{ dateKey: string }> = ({ dateKey }) => {
+    const { dispatch } = useTask();
+    const initialValue = { task: "", priority: EPriority.LOW }
 
     return (
         <div>
@@ -20,7 +22,11 @@ const TaskForm = () => {
                 initialValues={ initialValue }
                 onSubmit={(values, { resetForm }) => {
                     resetForm();
-                    console.log(values);
+                    const payload = {
+                        dateKey,
+                        values
+                    }
+                    dispatch({ type: EType.AddTask, payload});
                 }}
             >
                 {({
@@ -58,13 +64,13 @@ const TaskForm = () => {
                             }
                         </div>
                         <div className="mt-3">
-                            <RadioButton value={EPriority.HIGH} checked={values.picked === EPriority.HIGH}>
+                            <RadioButton value={EPriority.HIGH} checked={values.priority === EPriority.HIGH}>
                                 High
                             </RadioButton>
-                            <RadioButton value={EPriority.MEDIUM} checked={values.picked === EPriority.MEDIUM}>
+                            <RadioButton value={EPriority.MEDIUM} checked={values.priority === EPriority.MEDIUM}>
                                 Medium
                             </RadioButton>
-                            <RadioButton value={EPriority.LOW} checked={values.picked === EPriority.LOW}>
+                            <RadioButton value={EPriority.LOW} checked={values.priority === EPriority.LOW}>
                                 Low
                             </RadioButton>
                         </div>
