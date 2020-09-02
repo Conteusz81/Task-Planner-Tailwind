@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import { tasksReducer } from "../reducer";
-import { Action, ITasksDataStore } from "../utilities/interfaces";
+import { Action, ITask, ITasksDataStore } from "../utilities/interfaces";
 
 interface ITasksContext {
     tasks: ITasksDataStore;
     dispatch: React.Dispatch<Action>;
+    getMonthData: (isoMonthDates: string[]) => ITasksDataStore;
+    getDayData: (isoDate: string) => ITask[] | [];
 }
 
 export const TasksContext = createContext<ITasksContext | undefined>(undefined)
@@ -15,9 +17,21 @@ const TasksProvider: React.FC = ({ children }) => {
         return localData ? JSON.parse(localData) : {};
     });
 
+    const handleMonthData = (isoMonthDates: string[]) => {
+        const monthData: ITasksDataStore = isoMonthDates
+            .reduce((obj, key) => ({...obj, [key]: tasks[key] ?? []}), {});
+        return monthData;
+    }
+
+    const handleDayData = (isoDate: string) => {
+        return tasks[isoDate] ?? [];
+    }
+
     const value = {
         tasks,
         dispatch,
+        getMonthData: (isoMonthDates: string[]) => handleMonthData(isoMonthDates),
+        getDayData: (isoDate: string) => handleDayData(isoDate)
     }
 
     useEffect(() => {

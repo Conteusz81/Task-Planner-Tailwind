@@ -6,9 +6,7 @@ import { useTask } from "../../../context/TasksProvider";
 
 
 const TaskList: React.FC<{ dateKey: string }> = ({ dateKey }) => {
-
-    const { tasks, dispatch } = useTask();
-    const taskData = tasks[dateKey] ?? [];
+    const { getDayData, dispatch } = useTask();
 
     const taskElement = (priority: string) => {
         return cx("task_list_element", {
@@ -31,7 +29,7 @@ const TaskList: React.FC<{ dateKey: string }> = ({ dateKey }) => {
         return comparison;
     }
 
-    const sortedList = taskData.sort(compare);
+    const sortedList = getDayData(dateKey).sort(compare);
 
     return (
         <div>

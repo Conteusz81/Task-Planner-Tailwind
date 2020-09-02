@@ -14,11 +14,11 @@ import {
 import DayCard from "./DayCard";
 import { useDate } from "../../../context/DateProvider";
 import { useTask } from "../../../context/TasksProvider";
-// import { ITasksDataStore } from "../utilities/interfaces";
+import { ITasksDataStore } from "../../../utilities/interfaces";
 
 const MonthCells = () => {
     const { currentDate } = useDate();
-    const { tasks } = useTask()
+    const { getMonthData } = useTask()
     const monthStart = startOfMonth(currentDate);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart, {weekStartsOn: 1});
@@ -28,9 +28,8 @@ const MonthCells = () => {
         start: startDate,
         end: endDate
     })
-    // const isoMonthDays = monthDays.map(date => formatISO(date, {representation: "date"}))
-    // const monthDaysData: ITasksDataStore = isoMonthDays.reduce((obj, key) => ({...obj, [key]: tasks[key] ?? []}), {})
-
+    const isoMonthDays = monthDays.map(date => formatISO(date, {representation: "date"}))
+    const monthData: ITasksDataStore = getMonthData(isoMonthDays);
     return (
         <div className="grid grid-cols-7 grid-rows-days gap-2 lg:gap-4">
             {
@@ -40,7 +39,7 @@ const MonthCells = () => {
                    return (
                        <DayCard
                            key={dateKey}
-                           taskData={tasks[dateKey] ?? []}
+                           taskData={monthData[dateKey] ?? []}
                            dayNumber={dayNumber}
                            isSameMonth={isSameMonth(day, monthStart)}
                            isSameDay={isSameDay(day, new Date())}
