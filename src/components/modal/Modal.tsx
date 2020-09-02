@@ -2,9 +2,9 @@ import React from "react";
 import Dialog from "@material-ui/core/Dialog";
 import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
-import CalendarNav from "./CalendarNav";
-import DayDetails from "./DayDetails";
-import { useModal } from "../utilities/ModalProvider";
+import CalendarNav from "./calendar-nav/CalendarNav";
+import DayDetails from "./day-details/DayDetails";
+import { useModal } from "../../context/ModalProvider";
 import ModalClose from "./ModalClose";
 
 const Transition = React.forwardRef(function Transition(

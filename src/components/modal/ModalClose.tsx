@@ -1,6 +1,6 @@
 import React from "react";
 import { IoMdClose } from "react-icons/io";
-import { useModal } from "../utilities/ModalProvider";
+import { useModal } from "../../context/ModalProvider";
 
 const ModalClose = () => {
     const { handleDateNavClickClose } = useModal();

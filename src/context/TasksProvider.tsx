@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import { tasksReducer } from "../reducer";
-import {Action, ITasksDataStore} from "./interfaces";
+import { Action, ITasksDataStore } from "../utilities/interfaces";
 
 interface ITasksContext {
     tasks: ITasksDataStore;
-    dispatch: React.Dispatch<Action>
+    dispatch: React.Dispatch<Action>;
 }
 
 export const TasksContext = createContext<ITasksContext | undefined>(undefined)
@@ -15,12 +15,17 @@ const TasksProvider: React.FC = ({ children }) => {
         return localData ? JSON.parse(localData) : {};
     });
 
+    const value = {
+        tasks,
+        dispatch,
+    }
+
     useEffect(() => {
         localStorage.setItem("taskList", JSON.stringify(tasks));
     }, [tasks]);
 
     return (
-        <TasksContext.Provider value={{tasks, dispatch}}>
+        <TasksContext.Provider value={value}>
             { children }
         </TasksContext.Provider>
     );

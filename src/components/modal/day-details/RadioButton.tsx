@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from "classnames";
 import { Field } from "formik";
-import { EPriority } from "../utilities/interfaces";
+import { EPriority } from "../../../utilities/interfaces";
 
 interface IRadioProps {
     value: EPriority;

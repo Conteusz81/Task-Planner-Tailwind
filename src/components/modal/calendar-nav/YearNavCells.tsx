@@ -1,8 +1,8 @@
 import React from "react";
 import { addYears, eachYearOfInterval, format, getYear, subYears } from "date-fns";
 import YearNav from "./YearNav";
-import { useDate } from "../utilities/DateProvider";
-import { Nav } from "../utilities/interfaces";
+import { useDate } from "../../../context/DateProvider";
+import { Nav } from "../../../utilities/interfaces";
 
 interface IYearNavProps {
     setNav: (nav: Nav) => void;

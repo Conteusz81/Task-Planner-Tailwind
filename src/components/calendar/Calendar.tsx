@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from "./Navigation";
 import WeekDays from "./WeekDays";
-import MonthCells from "./MonthCells";
+import MonthCells from "./month-cells/MonthCells";
 
 const Calendar = () => {
     return (

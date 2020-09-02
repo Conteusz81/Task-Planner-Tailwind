@@ -3,7 +3,7 @@ import { formatISO } from "date-fns";
 import DayDetailsNav from "./DayDetailsNav";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
-import { useDate } from "../utilities/DateProvider";
+import { useDate } from "../../../context/DateProvider";
 
 const DayDetails = () => {
     const { chosenDay } = useDate();

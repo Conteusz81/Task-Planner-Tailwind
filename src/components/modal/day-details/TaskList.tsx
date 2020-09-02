@@ -1,8 +1,8 @@
 import React from "react";
 import cx from "classnames";
 import { AiOutlineDelete } from "react-icons/ai"
-import { EPriority, EType, ITask } from "../utilities/interfaces";
-import { useTask } from "../utilities/TasksProvider";
+import { EPriority, EType, ITask } from "../../../utilities/interfaces";
+import { useTask } from "../../../context/TasksProvider";
 
 
 const TaskList: React.FC<{ dateKey: string }> = ({ dateKey }) => {

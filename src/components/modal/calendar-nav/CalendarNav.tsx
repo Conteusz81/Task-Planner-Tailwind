@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import YearNavCells from "./YearNavCells";
 import MonthNavCells from "./MonthNavCells";
-import { Nav } from "../utilities/interfaces";
+import { Nav } from "../../../utilities/interfaces";
 
 const CalendarNav: React.FC<{ nav: Nav }> = ({ nav }) => {
     const [calendarNav, setCalendarNav] = useState<Nav>(nav);

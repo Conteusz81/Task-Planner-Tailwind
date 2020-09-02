@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { getYear } from "date-fns";
 import { useDate } from "./DateProvider";
-import { Nav } from "./interfaces";
+import { Nav } from "../utilities/interfaces";
 
 type Slide = "up" | "left" | "right" | "down";
 

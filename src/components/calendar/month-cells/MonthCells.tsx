@@ -12,8 +12,8 @@ import {
     startOfWeek
 } from "date-fns";
 import DayCard from "./DayCard";
-import { useDate } from "../utilities/DateProvider";
-import { useTask } from "../utilities/TasksProvider";
+import { useDate } from "../../../context/DateProvider";
+import { useTask } from "../../../context/TasksProvider";
 // import { ITasksDataStore } from "../utilities/interfaces";
 
 const MonthCells = () => {

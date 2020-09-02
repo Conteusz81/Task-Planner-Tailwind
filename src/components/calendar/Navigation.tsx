@@ -1,8 +1,8 @@
 import React from "react";
 import { format } from "date-fns";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { useDate } from "../utilities/DateProvider";
-import { useModal } from "../utilities/ModalProvider";
+import { useDate } from "../../context/DateProvider";
+import { useModal } from "../../context/ModalProvider";
 
 const Navigation: React.FC = () => {
     const { currentDate, nextMonth, prevMonth } = useDate();

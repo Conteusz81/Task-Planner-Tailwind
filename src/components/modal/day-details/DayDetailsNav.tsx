@@ -1,7 +1,7 @@
 import React from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { format } from "date-fns";
-import { useDate } from "../utilities/DateProvider";
+import { useDate } from "../../../context/DateProvider";
 
 const DayDetailsNav = () => {
     const { chosenDay, nextDay, prevDay } = useDate();

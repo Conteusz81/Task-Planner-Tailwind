@@ -1,8 +1,8 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
 import RadioButton from "./RadioButton";
-import { useTask } from "../utilities/TasksProvider";
-import { EPriority, EType } from "../utilities/interfaces";
+import { useTask } from "../../../context/TasksProvider";
+import { EPriority, EType } from "../../../utilities/interfaces";
 
 const validateTaskName = (value: string) => {
     let error;

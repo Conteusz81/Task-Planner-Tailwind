@@ -1,6 +1,6 @@
 import React from "react";
 import { addDays, format, startOfWeek } from "date-fns";
-import { useDate } from "../utilities/DateProvider";
+import { useDate } from "../../context/DateProvider";
 
 const WeekDays = () => {
     const { currentDate } = useDate();

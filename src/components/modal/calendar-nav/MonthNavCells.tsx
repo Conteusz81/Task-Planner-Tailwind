@@ -1,9 +1,9 @@
 import React from "react";
 import { eachMonthOfInterval, endOfYear, format, getYear, startOfYear } from "date-fns";
 import MonthNav from "./MonthNav";
-import { useDate } from "../utilities/DateProvider";
-import { useModal } from "../utilities/ModalProvider";
-import { Nav } from "../utilities/interfaces";
+import { useDate } from "../../../context/DateProvider";
+import { useModal } from "../../../context/ModalProvider";
+import { Nav } from "../../../utilities/interfaces";
 
 interface IYearNavProps {
     setNav: (nav: Nav) => void;

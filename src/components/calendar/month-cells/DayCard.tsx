@@ -1,9 +1,9 @@
 import React from "react";
 import cx from "classnames";
 import { GoPrimitiveDot } from "react-icons/go";
-import { useDate } from "../utilities/DateProvider";
-import { useModal } from "../utilities/ModalProvider";
-import { EPriority, ITask } from "../utilities/interfaces";
+import { useDate } from "../../../context/DateProvider";
+import { useModal } from "../../../context/ModalProvider";
+import { EPriority, ITask } from "../../../utilities/interfaces";
 
 export interface IDayCardProps {
     taskData: ITask[] | [];
