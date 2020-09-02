@@ -3,11 +3,10 @@ import cx from "classnames";
 import { GoPrimitiveDot } from "react-icons/go";
 import { useDate } from "../utilities/DateProvider";
 import { useModal } from "../utilities/ModalProvider";
-import { EPriority } from "../utilities/interfaces";
-import {useTask} from "../utilities/TasksProvider";
+import { EPriority, ITask } from "../utilities/interfaces";
 
 export interface IDayCardProps {
-    dateKey: string;
+    taskData: ITask[] | [];
     dayNumber: number;
     isSameMonth: boolean;
     isSameDay: boolean;
@@ -15,7 +14,7 @@ export interface IDayCardProps {
 }
 
 const DayCard: React.FC<IDayCardProps> = ({
-         dateKey,
+         taskData,
          dayNumber,
          isSameMonth,
          isSameDay,
@@ -23,8 +22,6 @@ const DayCard: React.FC<IDayCardProps> = ({
     }) => {
     const { nextMonth, prevMonth, setContextChosenDay } = useDate();
     const { handleNavClickOpen } = useModal();
-    const { tasks } = useTask();
-    const taskData = tasks[dateKey] ?? [];
 
     const wrapperClassValues = cx("day_card_wrapper", {
         'same_day': isSameDay,
