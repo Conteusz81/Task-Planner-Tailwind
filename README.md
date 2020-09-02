@@ -1,6 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Task Planner
+### It's built on React and TailwindCSS.
+### Calendar with the possibility of adding tasks to each day. Possibility to define the priority of each task. Whole app is fully responsive.
+#### The data is stored in local storage. Usage of React Hooks, Context API and TypeScript.
+
+## You can check it here:
+https://task-planner.netlify.app/
+
+## or
 
 In the project directory, you can run:
 
