@@ -6,7 +6,10 @@ import { useModal } from "../../../context/ModalProvider";
 import { EPriority, ITask } from "../../../utilities/interfaces";
 
 export interface IDayCardProps {
-    taskData: ITask[] | [];
+    taskData: {
+        isFreeDay: boolean;
+        content: ITask[] | [];
+    }
     dayNumber: number;
     isSameMonth: boolean;
     isSameDay: boolean;
@@ -25,14 +28,13 @@ const DayCard: React.FC<IDayCardProps> = ({
 
     const wrapperClassValues = cx("day_card_wrapper", {
         'same_day': isSameDay,
-        'bg-teal-200': isSunday,
+        'bg-teal-200': isSunday || taskData.isFreeDay,
         'font-bold': isSameMonth,
         'opacity-25 font-base': !isSameMonth
     });
-
-    const pickedHigh = taskData.some(el => el.priority === EPriority.HIGH);
-    const pickedMedium = taskData.some(el => el.priority === EPriority.MEDIUM);
-    const pickedLow = taskData.some(el => el.priority === EPriority.LOW);
+    const pickedHigh = taskData.content.some(el => el.priority === EPriority.HIGH);
+    const pickedMedium = taskData.content.some(el => el.priority === EPriority.MEDIUM);
+    const pickedLow = taskData.content.some(el => el.priority === EPriority.LOW);
 
     const handleDayCardClick = () => {
         if (!isSameMonth && dayNumber < 7) {
