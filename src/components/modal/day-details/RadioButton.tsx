@@ -9,7 +9,7 @@ interface IRadioProps {
 }
 
 const RadioButton: React.FC<IRadioProps> = ({ value, checked, children}) => {
-    const labelClassNames = cx("relative, inline-flex items-center mr-6 font-semibold lg:mr-8 lg:text-2xl", {
+    const labelClassNames = cx("relative, inline-flex items-center mr-6 font-semibold lg:mr-8 lg:text-2xl cursor-pointer", {
         "text-red-600": value === EPriority.HIGH,
         "text-yellow-600": value === EPriority.MEDIUM,
         "text-green-600": value === EPriority.LOW,

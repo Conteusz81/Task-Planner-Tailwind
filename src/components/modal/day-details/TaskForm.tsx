@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
 import RadioButton from "./RadioButton";
-import { useTask } from "../../../context/TasksProvider";
+import { useDataStore } from "../../../context/DataProvider";
 import { EPriority, EType } from "../../../utilities/interfaces";
 
 const validateTaskName = (value: string) => {
@@ -13,7 +13,7 @@ const validateTaskName = (value: string) => {
 };
 
 const TaskForm: React.FC<{ dateKey: string }> = ({ dateKey }) => {
-    const { dispatch } = useTask();
+    const { dispatch } = useDataStore();
     const initialValue = { task: "", priority: EPriority.LOW }
 
     return (

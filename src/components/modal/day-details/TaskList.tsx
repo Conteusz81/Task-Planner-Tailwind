@@ -1,14 +1,16 @@
 import React from "react";
 import cx from "classnames";
 import { AiOutlineDelete } from "react-icons/ai"
+import { useDataStore } from "../../../context/DataProvider";
 import { EPriority, EType, ITask } from "../../../utilities/interfaces";
-import { useTask } from "../../../context/TasksProvider";
 
+interface ITaskListProps {
+    dateKey: string;
+    tasks: ITask[];
+}
 
-const TaskList: React.FC<{ dateKey: string }> = ({ dateKey }) => {
-
-    const { tasks, dispatch } = useTask();
-    const taskData = tasks[dateKey] ?? [];
+const TaskList: React.FC<ITaskListProps> = ({ dateKey, tasks }) => {
+    const { dispatch } = useDataStore();
 
     const taskElement = (priority: string) => {
         return cx("task_list_element", {
@@ -31,7 +33,7 @@ const TaskList: React.FC<{ dateKey: string }> = ({ dateKey }) => {
         return comparison;
     }
 
-    const sortedList = taskData.sort(compare);
+    const sortedList = tasks.sort(compare);
 
     return (
         <div>

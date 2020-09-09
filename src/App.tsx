@@ -4,16 +4,16 @@ import Calendar from "./components/calendar/Calendar";
 import Modal from "./components/modal/Modal";
 import { DateProvider } from "./context/DateProvider";
 import { ModalProvider } from "./context/ModalProvider";
-import { TasksProvider } from "./context/TasksProvider";
+import { DataProvider } from "./context/DataProvider";
 
 function App() {
   return (
       <DateProvider>
           <ModalProvider>
-            <TasksProvider>
+            <DataProvider>
                 <Calendar />
                 <Modal />
-            </TasksProvider>
+            </DataProvider>
            </ModalProvider>
       </DateProvider>
   );

@@ -8,7 +8,8 @@ export enum EPriority {
 
 export enum EType {
     AddTask,
-    RemoveTask
+    RemoveTask,
+    ToggleFreeDay
 }
 
 export type Action = {
@@ -26,8 +27,13 @@ export type Action = {
         dateKey: string;
         id: string;
     }
+} | {
+    type: EType.ToggleFreeDay;
+    payload: {
+        dateKey: string;
+        isFreeDay: boolean;
+    }
 }
-
 
 export interface ITask {
     id: string;
@@ -35,6 +41,9 @@ export interface ITask {
     priority: EPriority;
 }
 
-export interface ITasksDataStore {
-    [key: string]: ITask[]
+export interface IDataStore {
+    [key: string]: {
+        isFreeDay: boolean;
+        content: ITask[];
+    }
 }
