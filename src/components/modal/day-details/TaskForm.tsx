@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
+import cx from "classnames";
 import RadioButton from "./RadioButton";
 import { useDataStore } from "../../../context/DataProvider";
 import { EPriority, EType } from "../../../utilities/interfaces";
@@ -7,7 +8,7 @@ import { EPriority, EType } from "../../../utilities/interfaces";
 const validateTaskName = (value: string) => {
     let error;
     if (!value) {
-        error = 'Please fill out this field.';
+        error = 'Required';
     }
     return error;
 };
@@ -28,19 +29,26 @@ const TaskForm: React.FC<{ dateKey: string }> = ({ dateKey }) => {
                     }
                     dispatch({ type: EType.AddTask, payload});
                 }}
+                validateOnBlur={false}
+                validateOnChange={false}
             >
                 {({
                       values,
                       errors,
-                      touched,
+                      // touched,
                       handleChange,
                       handleBlur,
-                  }) => (
-                    <Form autoComplete="off" className="mb-8">
-                        <div className="h-16">
-                            <div className="flex justify-between">
+                  }) => {
+                    const inputClasses = cx("form_input focus:outline-none focus:bg-white", {
+                        'bg-gray-200 border-gray-200': !errors.task,
+                        'bg-red-100 border border-2 border-red-300': errors.task
+                    });
+
+                    return (
+                        <Form autoComplete="off" className="mb-8  lg:mb-12">
+                            <div className="flex justify-between mb-4 lg:mb-8">
                                 <Field
-                                    className="form_input focus:outline-none focus:bg-white"
+                                    className={inputClasses}
                                     type="text"
                                     name="task"
                                     validate={validateTaskName}
@@ -56,26 +64,21 @@ const TaskForm: React.FC<{ dateKey: string }> = ({ dateKey }) => {
                                     Add
                                 </button>
                             </div>
-                            {
-                                errors.task && touched.task &&
-                                <div className="text-red-500 text-xs italic">
-                                    {errors.task}
-                                </div>
-                            }
-                        </div>
-                        <div className="mt-3">
-                            <RadioButton value={EPriority.HIGH} checked={values.priority === EPriority.HIGH}>
-                                High
-                            </RadioButton>
-                            <RadioButton value={EPriority.MEDIUM} checked={values.priority === EPriority.MEDIUM}>
-                                Medium
-                            </RadioButton>
-                            <RadioButton value={EPriority.LOW} checked={values.priority === EPriority.LOW}>
-                                Low
-                            </RadioButton>
-                        </div>
-                    </Form>
-                )}
+                            <div>
+                                <RadioButton value={EPriority.HIGH} checked={values.priority === EPriority.HIGH}>
+                                    High
+                                </RadioButton>
+                                <RadioButton value={EPriority.MEDIUM} checked={values.priority === EPriority.MEDIUM}>
+                                    Medium
+                                </RadioButton>
+                                <RadioButton value={EPriority.LOW} checked={values.priority === EPriority.LOW}>
+                                    Low
+                                </RadioButton>
+                            </div>
+                        </Form>
+                    )
+                }
+                }
             </Formik>
         </div>
     );

@@ -19,7 +19,7 @@ const FreeDaySwitch: React.FC<ICheckboxProps> = ({ dateKey, isFreeDay }) => {
     }
 
     return (
-        <div className="free_day_wrapper">
+        <div className="free_day_wrapper lg:mb-8">
             <input
                     type="checkbox"
                     name="free-day"
