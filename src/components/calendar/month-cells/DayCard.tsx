@@ -28,7 +28,8 @@ const DayCard: React.FC<IDayCardProps> = ({
 
     const wrapperClassValues = cx("day_card_wrapper", {
         'same_day': isSameDay,
-        'bg-teal-200': isSunday || taskData.isFreeDay,
+        'bg-gradient-to-b from-teal-200 via-teal-100 to-white': isSunday && !taskData.isFreeDay,
+        'bg-teal-200': taskData.isFreeDay,
         'font-bold': isSameMonth,
         'opacity-25 font-base': !isSameMonth
     });
